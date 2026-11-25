@@ -1,0 +1,7 @@
+/vendor/
+/build/
+/.production-contract.json
+/.env
+/.env.*
+/.phpunit.result.cache
+/.phpunit.cache/

@@ -1,0 +1,2220 @@
+{
+  "ApiKeyContextController_context": {
+    "method": "GET",
+    "path": "/api-key/context",
+    "query": {
+      "type": "object",
+      "required": [],
+      "properties": {}
+    },
+    "body": {},
+    "multipart": false
+  },
+  "ImagesController_upload": {
+    "method": "POST",
+    "path": "/projects/{projectId}/images",
+    "query": {
+      "type": "object",
+      "required": [],
+      "properties": {}
+    },
+    "body": {
+      "type": "object",
+      "required": [
+        "file"
+      ],
+      "properties": {
+        "file": {
+          "type": "string",
+          "format": "binary"
+        }
+      }
+    },
+    "multipart": true
+  },
+  "ImagesController_list": {
+    "method": "GET",
+    "path": "/projects/{projectId}/images",
+    "query": {
+      "type": "object",
+      "required": [],
+      "properties": {
+        "page": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "limit": {
+          "minimum": 1,
+          "maximum": 100,
+          "type": "integer"
+        },
+        "q": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100,
+          "description": "Case-insensitive filename prefix."
+        }
+      }
+    },
+    "body": {},
+    "multipart": false
+  },
+  "ImagesController_get": {
+    "method": "GET",
+    "path": "/projects/{projectId}/images/{id}",
+    "query": {
+      "type": "object",
+      "required": [],
+      "properties": {}
+    },
+    "body": {},
+    "multipart": false
+  },
+  "ImagesController_remove": {
+    "method": "DELETE",
+    "path": "/projects/{projectId}/images/{id}",
+    "query": {
+      "type": "object",
+      "required": [],
+      "properties": {}
+    },
+    "body": {},
+    "multipart": false
+  },
+  "ImagesController_content": {
+    "method": "GET",
+    "path": "/projects/{projectId}/images/{id}/content",
+    "query": {
+      "type": "object",
+      "required": [],
+      "properties": {}
+    },
+    "body": {},
+    "multipart": false
+  },
+  "TransformsController_list": {
+    "method": "GET",
+    "path": "/projects/{projectId}/transforms",
+    "query": {
+      "type": "object",
+      "required": [],
+      "properties": {
+        "page": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "limit": {
+          "minimum": 1,
+          "maximum": 100,
+          "type": "integer"
+        }
+      }
+    },
+    "body": {},
+    "multipart": false
+  },
+  "TransformsController_create": {
+    "method": "POST",
+    "path": "/projects/{projectId}/transforms",
+    "query": {
+      "type": "object",
+      "required": [],
+      "properties": {}
+    },
+    "body": {
+      "type": "object",
+      "properties": {
+        "imageId": {
+          "type": "string",
+          "description": "Exactly one of imageId or url is required."
+        },
+        "url": {
+          "type": "string",
+          "description": "Public HTTP(S) image URL; each request revalidates and fetches it."
+        },
+        "mode": {
+          "type": "string",
+          "enum": [
+            "PERSIST",
+            "CACHE",
+            "EPHEMERAL"
+          ]
+        },
+        "maxOutputBytes": {
+          "type": "number",
+          "minimum": 1,
+          "maximum": 104857600,
+          "description": "Output byte ceiling reserved before work; actual bytes are committed."
+        },
+        "transform": {
+          "type": "object",
+          "properties": {
+            "width": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 10000
+            },
+            "height": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 10000
+            },
+            "fit": {
+              "type": "string",
+              "enum": [
+                "cover",
+                "contain",
+                "inside",
+                "fill"
+              ],
+              "description": "Default cover when width and height are provided, otherwise inside. cover/contain/fill require both dimensions."
+            },
+            "crop": {
+              "type": "object",
+              "required": [
+                "left",
+                "top",
+                "width",
+                "height"
+              ],
+              "properties": {
+                "left": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 25000000
+                },
+                "top": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 25000000
+                },
+                "width": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 10000
+                },
+                "height": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 10000
+                }
+              }
+            },
+            "format": {
+              "type": "string",
+              "enum": [
+                "jpeg",
+                "png",
+                "webp",
+                "avif",
+                "gif"
+              ]
+            },
+            "quality": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100
+            },
+            "rotate": {
+              "type": "integer",
+              "enum": [
+                -360,
+                -270,
+                -180,
+                -90,
+                0,
+                90,
+                180,
+                270,
+                360
+              ]
+            },
+            "flip": {
+              "type": "boolean",
+              "description": "Mirror vertically (top to bottom)."
+            },
+            "flop": {
+              "type": "boolean",
+              "description": "Mirror horizontally (left to right)."
+            },
+            "optimize": {
+              "type": "boolean"
+            },
+            "stripMetadata": {
+              "type": "boolean",
+              "enum": [
+                true
+              ],
+              "description": "Metadata is always stripped. Only true is accepted."
+            },
+            "grayscale": {
+              "type": "boolean",
+              "description": "Convert to greyscale when true."
+            },
+            "negate": {
+              "type": "boolean",
+              "description": "Invert colour channels when true; alpha is preserved unchanged."
+            },
+            "blur": {
+              "type": "number",
+              "minimum": 0.3,
+              "maximum": 10,
+              "description": "Gaussian blur sigma. Omit to skip blur."
+            },
+            "sharpen": {
+              "type": "number",
+              "minimum": 0.5,
+              "maximum": 5,
+              "description": "Sharpen sigma. Omit to skip sharpen."
+            },
+            "brightness": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 3,
+              "description": "Modulate brightness multiplier (1 = unchanged). Omit to leave brightness alone."
+            },
+            "saturation": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 3,
+              "description": "Modulate saturation multiplier (1 = unchanged). Omit to leave saturation alone."
+            },
+            "hue": {
+              "type": "integer",
+              "minimum": -180,
+              "maximum": 180,
+              "description": "Hue rotation in degrees. Omit to leave hue alone."
+            },
+            "trim": {
+              "description": "Trim near-background borders after orientation. `true` uses threshold 10; or `{ threshold: 1–100 }`.",
+              "oneOf": [
+                {
+                  "type": "boolean",
+                  "enum": [
+                    true
+                  ]
+                },
+                {
+                  "type": "object",
+                  "required": [
+                    "threshold"
+                  ],
+                  "properties": {
+                    "threshold": {
+                      "type": "integer",
+                      "minimum": 1,
+                      "maximum": 100
+                    }
+                  }
+                }
+              ]
+            },
+            "extend": {
+              "type": "object",
+              "required": [
+                "top",
+                "right",
+                "bottom",
+                "left"
+              ],
+              "description": "Padding in pixels after effects. Each side 0–MAX_OUTPUT_DIMENSION; totals capped; at least one side > 0.",
+              "properties": {
+                "top": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 10000
+                },
+                "right": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 10000
+                },
+                "bottom": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 10000
+                },
+                "left": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 10000
+                }
+              }
+            },
+            "background": {
+              "type": "string",
+              "pattern": "^#([0-9A-Fa-f]{3}|[0-9A-Fa-f]{6})$",
+              "description": "Hex colour for contain letterbox, extend padding, and JPEG flatten. Default #ffffff matches legacy behaviour."
+            },
+            "position": {
+              "type": "string",
+              "enum": [
+                "center",
+                "entropy",
+                "attention"
+              ],
+              "description": "Resize focal position (mainly for cover). Default center matches legacy Sharp centre."
+            }
+          }
+        }
+      },
+      "oneOf": [
+        {
+          "required": [
+            "imageId"
+          ]
+        },
+        {
+          "required": [
+            "url"
+          ]
+        }
+      ]
+    },
+    "multipart": false
+  },
+  "TransformsController_get": {
+    "method": "GET",
+    "path": "/projects/{projectId}/transforms/{id}",
+    "query": {
+      "type": "object",
+      "required": [],
+      "properties": {}
+    },
+    "body": {},
+    "multipart": false
+  },
+  "TransformsController_remove": {
+    "method": "DELETE",
+    "path": "/projects/{projectId}/transforms/{id}",
+    "query": {
+      "type": "object",
+      "required": [],
+      "properties": {}
+    },
+    "body": {},
+    "multipart": false
+  },
+  "TransformsController_content": {
+    "method": "GET",
+    "path": "/projects/{projectId}/transforms/{id}/content",
+    "query": {
+      "type": "object",
+      "required": [],
+      "properties": {}
+    },
+    "body": {},
+    "multipart": false
+  },
+  "ProcessingController_quote": {
+    "method": "POST",
+    "path": "/projects/{projectId}/credits/quote",
+    "query": {
+      "type": "object",
+      "required": [],
+      "properties": {}
+    },
+    "body": {
+      "type": "object",
+      "required": [
+        "kind",
+        "units"
+      ],
+      "properties": {
+        "kind": {
+          "type": "string",
+          "enum": [
+            "code.qr",
+            "code.barcode",
+            "pdf.info",
+            "pdf.render",
+            "pdf.merge",
+            "pdf.extract",
+            "image.transform",
+            "docx.render",
+            "xlsx.render",
+            "pptx.render",
+            "website.capture"
+          ]
+        },
+        "units": {
+          "type": "number",
+          "minimum": 1,
+          "maximum": 100
+        },
+        "remote": {
+          "type": "boolean",
+          "enum": [
+            true,
+            false
+          ]
+        }
+      }
+    },
+    "multipart": false
+  },
+  "ProcessingController_lookup": {
+    "method": "POST",
+    "path": "/projects/{projectId}/operations/lookup",
+    "query": {
+      "type": "object",
+      "required": [],
+      "properties": {}
+    },
+    "body": {
+      "type": "object",
+      "required": [
+        "kind",
+        "key"
+      ],
+      "properties": {
+        "kind": {
+          "type": "string",
+          "enum": [
+            "code.qr",
+            "code.barcode",
+            "pdf.info",
+            "pdf.render",
+            "pdf.merge",
+            "pdf.extract",
+            "image.transform",
+            "remote.fetch",
+            "docx.render",
+            "xlsx.render",
+            "pptx.render",
+            "website.capture"
+          ]
+        },
+        "key": {
+          "type": "string"
+        }
+      }
+    },
+    "multipart": false
+  },
+  "ProcessingController_status": {
+    "method": "GET",
+    "path": "/projects/{projectId}/operations/{id}",
+    "query": {
+      "type": "object",
+      "required": [],
+      "properties": {}
+    },
+    "body": {},
+    "multipart": false
+  },
+  "ProcessingController_result": {
+    "method": "GET",
+    "path": "/projects/{projectId}/operations/{id}/result",
+    "query": {
+      "type": "object",
+      "required": [],
+      "properties": {}
+    },
+    "body": {},
+    "multipart": false
+  },
+  "ConversionsController_capabilities": {
+    "method": "GET",
+    "path": "/projects/{projectId}/conversions/capabilities",
+    "query": {
+      "type": "object",
+      "required": [],
+      "properties": {}
+    },
+    "body": {},
+    "multipart": false
+  },
+  "ConversionsController_lookup": {
+    "method": "GET",
+    "path": "/projects/{projectId}/conversions/lookup",
+    "query": {
+      "type": "object",
+      "required": [
+        "key"
+      ],
+      "properties": {
+        "key": {
+          "type": "string"
+        }
+      }
+    },
+    "body": {},
+    "multipart": false
+  },
+  "ConversionsController_list": {
+    "method": "GET",
+    "path": "/projects/{projectId}/conversions",
+    "query": {
+      "type": "object",
+      "required": [],
+      "properties": {
+        "engine": {
+          "type": "string",
+          "enum": [
+            "docx",
+            "xlsx",
+            "pptx",
+            "website"
+          ]
+        }
+      }
+    },
+    "body": {},
+    "multipart": false
+  },
+  "ConversionsController_create": {
+    "method": "POST",
+    "path": "/projects/{projectId}/conversions",
+    "query": {
+      "type": "object",
+      "required": [],
+      "properties": {
+        "page": {
+          "type": "number",
+          "minimum": 1,
+          "maximum": 50
+        },
+        "scale": {
+          "type": "number",
+          "minimum": 0.1,
+          "maximum": 6
+        },
+        "format": {
+          "type": "string",
+          "enum": [
+            "png",
+            "jpeg",
+            "webp"
+          ]
+        },
+        "quality": {
+          "type": "number",
+          "minimum": 1,
+          "maximum": 100
+        },
+        "fitSinglePage": {
+          "type": "boolean"
+        },
+        "honorWordPageBreaks": {
+          "type": "boolean"
+        },
+        "renderHeaders": {
+          "type": "boolean"
+        },
+        "renderFooters": {
+          "type": "boolean"
+        },
+        "renderFootnotes": {
+          "type": "boolean"
+        },
+        "renderEndnotes": {
+          "type": "boolean"
+        },
+        "repairBrokenRelationships": {
+          "type": "boolean"
+        },
+        "unwrapSdt": {
+          "type": "boolean"
+        },
+        "collapseMcAlternate": {
+          "type": "boolean"
+        },
+        "ignoreImageWrap": {
+          "type": "boolean"
+        },
+        "ignoreTableWrap": {
+          "type": "boolean"
+        },
+        "applyWordChrome": {
+          "type": "boolean"
+        },
+        "normalizeTheme": {
+          "type": "boolean"
+        },
+        "renderChanges": {
+          "type": "boolean"
+        }
+      }
+    },
+    "body": {
+      "type": "object",
+      "required": [
+        "file"
+      ],
+      "properties": {
+        "file": {
+          "type": "string",
+          "format": "binary"
+        }
+      }
+    },
+    "multipart": true
+  },
+  "ConversionsController_xlsx": {
+    "method": "POST",
+    "path": "/projects/{projectId}/conversions/xlsx",
+    "query": {
+      "type": "object",
+      "required": [],
+      "properties": {
+        "page": {
+          "type": "number",
+          "minimum": 1,
+          "maximum": 50
+        },
+        "scale": {
+          "type": "number",
+          "minimum": 0.1,
+          "maximum": 6
+        },
+        "format": {
+          "type": "string",
+          "enum": [
+            "png",
+            "jpeg",
+            "webp"
+          ]
+        },
+        "quality": {
+          "type": "number",
+          "minimum": 1,
+          "maximum": 100
+        },
+        "engine": {
+          "type": "string",
+          "enum": [
+            "xlsx"
+          ]
+        },
+        "sheet": {
+          "type": "number",
+          "minimum": 1,
+          "maximum": 50
+        },
+        "renderMode": {
+          "type": "string",
+          "enum": [
+            "sheet",
+            "print"
+          ]
+        },
+        "range": {
+          "type": "string",
+          "maxLength": 40,
+          "description": "Optional A1:B20 cell range."
+        },
+        "showGridLines": {
+          "type": "boolean"
+        },
+        "paperSize": {
+          "type": "string",
+          "enum": [
+            "saved",
+            "A3",
+            "A4",
+            "A5",
+            "Letter",
+            "Legal",
+            "Tabloid",
+            "B5"
+          ]
+        }
+      }
+    },
+    "body": {
+      "type": "object",
+      "required": [
+        "file"
+      ],
+      "properties": {
+        "file": {
+          "type": "string",
+          "format": "binary"
+        }
+      }
+    },
+    "multipart": true
+  },
+  "ConversionsController_pptx": {
+    "method": "POST",
+    "path": "/projects/{projectId}/conversions/pptx",
+    "query": {
+      "type": "object",
+      "required": [],
+      "properties": {
+        "page": {
+          "type": "number",
+          "minimum": 1,
+          "maximum": 50
+        },
+        "scale": {
+          "type": "number",
+          "minimum": 0.1,
+          "maximum": 6
+        },
+        "format": {
+          "type": "string",
+          "enum": [
+            "png",
+            "jpeg",
+            "webp"
+          ]
+        },
+        "quality": {
+          "type": "number",
+          "minimum": 1,
+          "maximum": 100
+        },
+        "engine": {
+          "type": "string",
+          "enum": [
+            "pptx"
+          ]
+        }
+      }
+    },
+    "body": {
+      "type": "object",
+      "required": [
+        "file"
+      ],
+      "properties": {
+        "file": {
+          "type": "string",
+          "format": "binary"
+        }
+      }
+    },
+    "multipart": true
+  },
+  "ConversionsController_website": {
+    "method": "POST",
+    "path": "/projects/{projectId}/conversions/website",
+    "query": {
+      "type": "object",
+      "required": [],
+      "properties": {
+        "page": {
+          "type": "number",
+          "minimum": 1,
+          "maximum": 50
+        },
+        "scale": {
+          "type": "number",
+          "minimum": 0.1,
+          "maximum": 6
+        },
+        "format": {
+          "type": "string",
+          "enum": [
+            "png",
+            "jpeg",
+            "webp"
+          ]
+        },
+        "quality": {
+          "type": "number",
+          "minimum": 1,
+          "maximum": 100
+        },
+        "engine": {
+          "type": "string",
+          "enum": [
+            "website"
+          ]
+        },
+        "mode": {
+          "type": "string",
+          "enum": [
+            "viewport",
+            "fullPage",
+            "element",
+            "clip"
+          ]
+        },
+        "width": {
+          "type": "number",
+          "minimum": 240,
+          "maximum": 3840
+        },
+        "height": {
+          "type": "number",
+          "minimum": 240,
+          "maximum": 2160
+        },
+        "selector": {
+          "type": "string",
+          "maxLength": 200
+        },
+        "clipX": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 30000
+        },
+        "clipY": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 30000
+        },
+        "clipWidth": {
+          "type": "number",
+          "minimum": 1,
+          "maximum": 3840
+        },
+        "clipHeight": {
+          "type": "number",
+          "minimum": 1,
+          "maximum": 16000
+        },
+        "javascriptEnabled": {
+          "type": "boolean"
+        },
+        "blockTrackers": {
+          "type": "boolean"
+        },
+        "autoScroll": {
+          "type": "boolean"
+        },
+        "freezeAnimations": {
+          "type": "boolean"
+        },
+        "omitBackground": {
+          "type": "boolean"
+        },
+        "colorScheme": {
+          "type": "string",
+          "enum": [
+            "light",
+            "dark"
+          ]
+        },
+        "reducedMotion": {
+          "type": "boolean"
+        },
+        "waitUntil": {
+          "type": "string",
+          "enum": [
+            "load",
+            "domcontentloaded",
+            "networkidle2"
+          ]
+        },
+        "waitMs": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 3000
+        }
+      }
+    },
+    "body": {
+      "type": "object",
+      "required": [
+        "url"
+      ],
+      "properties": {
+        "url": {
+          "type": "string",
+          "maxLength": 2048,
+          "description": "Public HTTP(S) URL. No authentication or cookies."
+        }
+      }
+    },
+    "multipart": false
+  },
+  "ConversionsController_get": {
+    "method": "GET",
+    "path": "/projects/{projectId}/conversions/{id}",
+    "query": {
+      "type": "object",
+      "required": [],
+      "properties": {}
+    },
+    "body": {},
+    "multipart": false
+  },
+  "ConversionsController_cancel": {
+    "method": "POST",
+    "path": "/projects/{projectId}/conversions/{id}/cancel",
+    "query": {
+      "type": "object",
+      "required": [],
+      "properties": {}
+    },
+    "body": {},
+    "multipart": false
+  },
+  "ConversionsController_save": {
+    "method": "POST",
+    "path": "/projects/{projectId}/conversions/{id}/save",
+    "query": {
+      "type": "object",
+      "required": [],
+      "properties": {}
+    },
+    "body": {},
+    "multipart": false
+  },
+  "ConversionsController_download": {
+    "method": "GET",
+    "path": "/projects/{projectId}/conversions/{id}/download",
+    "query": {
+      "type": "object",
+      "required": [],
+      "properties": {}
+    },
+    "body": {},
+    "multipart": false
+  },
+  "DynamicCodesController_capabilities": {
+    "method": "GET",
+    "path": "/projects/{projectId}/dynamic-codes/capabilities",
+    "query": {
+      "type": "object",
+      "required": [],
+      "properties": {}
+    },
+    "body": {},
+    "multipart": false
+  },
+  "DynamicCodesController_list": {
+    "method": "GET",
+    "path": "/projects/{projectId}/dynamic-codes",
+    "query": {
+      "type": "object",
+      "required": [],
+      "properties": {
+        "page": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "limit": {
+          "minimum": 1,
+          "maximum": 100,
+          "type": "integer"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "active",
+            "paused",
+            "deleted"
+          ]
+        },
+        "search": {
+          "type": "string",
+          "maxLength": 100
+        }
+      }
+    },
+    "body": {},
+    "multipart": false
+  },
+  "DynamicCodesController_create": {
+    "method": "POST",
+    "path": "/projects/{projectId}/dynamic-codes",
+    "query": {
+      "type": "object",
+      "required": [],
+      "properties": {}
+    },
+    "body": {
+      "type": "object",
+      "required": [
+        "name",
+        "destination"
+      ],
+      "properties": {
+        "analyticsEnabled": {
+          "type": "boolean"
+        },
+        "name": {
+          "type": "string"
+        },
+        "destination": {
+          "type": "string",
+          "maxLength": 2048
+        }
+      }
+    },
+    "multipart": false
+  },
+  "DynamicCodesController_detail": {
+    "method": "GET",
+    "path": "/projects/{projectId}/dynamic-codes/{id}",
+    "query": {
+      "type": "object",
+      "required": [],
+      "properties": {}
+    },
+    "body": {},
+    "multipart": false
+  },
+  "DynamicCodesController_edit": {
+    "method": "PATCH",
+    "path": "/projects/{projectId}/dynamic-codes/{id}",
+    "query": {
+      "type": "object",
+      "required": [],
+      "properties": {}
+    },
+    "body": {
+      "type": "object",
+      "required": [
+        "expectedRevision"
+      ],
+      "properties": {
+        "analyticsEnabled": {
+          "type": "boolean"
+        },
+        "qrOptions": {
+          "type": "object",
+          "required": [
+            "content"
+          ],
+          "properties": {
+            "transparent": {
+              "type": "boolean",
+              "description": "Export without a background. Scan checks use a white surface."
+            },
+            "design": {
+              "type": "object",
+              "required": [
+                "schemaVersion",
+                "template",
+                "templateVersion"
+              ],
+              "properties": {
+                "moduleShape": {
+                  "type": "string",
+                  "enum": [
+                    "square",
+                    "rounded",
+                    "dots",
+                    "soft",
+                    "classy"
+                  ]
+                },
+                "finderOuter": {
+                  "type": "string",
+                  "enum": [
+                    "square",
+                    "rounded",
+                    "circle"
+                  ]
+                },
+                "finderInner": {
+                  "type": "string",
+                  "enum": [
+                    "square",
+                    "rounded",
+                    "dot"
+                  ]
+                },
+                "fill": {
+                  "type": "string",
+                  "enum": [
+                    "solid",
+                    "linear"
+                  ]
+                },
+                "textAlign": {
+                  "type": "string",
+                  "enum": [
+                    "left",
+                    "center",
+                    "right"
+                  ]
+                },
+                "fontFamily": {
+                  "type": "string",
+                  "enum": [
+                    "sans",
+                    "serif",
+                    "mono"
+                  ]
+                },
+                "fontWeight": {
+                  "type": "string",
+                  "enum": [
+                    "normal",
+                    "bold"
+                  ]
+                },
+                "barTextAlign": {
+                  "type": "string",
+                  "enum": [
+                    "left",
+                    "center",
+                    "right"
+                  ]
+                },
+                "barTextPosition": {
+                  "type": "string",
+                  "enum": [
+                    "above",
+                    "below"
+                  ]
+                },
+                "moduleScale": {
+                  "type": "integer",
+                  "minimum": 85,
+                  "maximum": 100
+                },
+                "gradientAngle": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 180
+                },
+                "logoScale": {
+                  "type": "integer",
+                  "minimum": 8,
+                  "maximum": 20
+                },
+                "logoPadding": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 2
+                },
+                "captionSize": {
+                  "type": "integer",
+                  "minimum": 8,
+                  "maximum": 24
+                },
+                "quietZone": {
+                  "type": "integer",
+                  "minimum": 12,
+                  "maximum": 32
+                },
+                "barTextSize": {
+                  "type": "integer",
+                  "minimum": 8,
+                  "maximum": 20
+                },
+                "finderColor": {
+                  "type": "string",
+                  "pattern": "^#([0-9A-Fa-f]{3}|[0-9A-Fa-f]{6})$"
+                },
+                "finderInnerColor": {
+                  "type": "string",
+                  "pattern": "^#([0-9A-Fa-f]{3}|[0-9A-Fa-f]{6})$"
+                },
+                "gradientColor": {
+                  "type": "string",
+                  "pattern": "^#([0-9A-Fa-f]{3}|[0-9A-Fa-f]{6})$"
+                },
+                "frameColor": {
+                  "type": "string",
+                  "pattern": "^#([0-9A-Fa-f]{3}|[0-9A-Fa-f]{6})$"
+                },
+                "captionColor": {
+                  "type": "string",
+                  "pattern": "^#([0-9A-Fa-f]{3}|[0-9A-Fa-f]{6})$"
+                },
+                "headline": {
+                  "type": "string",
+                  "maxLength": 60
+                },
+                "subtitle": {
+                  "type": "string",
+                  "maxLength": 100
+                },
+                "schemaVersion": {
+                  "type": "number",
+                  "enum": [
+                    1
+                  ]
+                },
+                "template": {
+                  "type": "string",
+                  "enum": [
+                    "classic",
+                    "rounded",
+                    "dots",
+                    "label"
+                  ]
+                },
+                "templateVersion": {
+                  "type": "number",
+                  "enum": [
+                    1
+                  ]
+                },
+                "frame": {
+                  "type": "string",
+                  "enum": [
+                    "none",
+                    "line",
+                    "rounded",
+                    "brackets",
+                    "badge"
+                  ]
+                },
+                "caption": {
+                  "type": "string",
+                  "maxLength": 60
+                },
+                "logoImageId": {
+                  "type": "string",
+                  "description": "Ready owned raster image in the same project; at most 1 MiB and 1 MP. QR only."
+                }
+              },
+              "description": "Static designer: four-module minimum margin, minimum three pixels per module, high ECC for logos; exact-payload scan check."
+            },
+            "content": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 2048,
+              "description": "Text to encode. Also subject to the configured UTF-8 byte limit (default 2048 bytes)."
+            },
+            "format": {
+              "type": "string",
+              "enum": [
+                "png",
+                "svg"
+              ]
+            },
+            "size": {
+              "type": "integer",
+              "minimum": 128,
+              "maximum": 1024,
+              "description": "Output edge in pixels; configured limits may be lower."
+            },
+            "margin": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 16,
+              "description": "Quiet-zone margin in modules."
+            },
+            "errorCorrection": {
+              "type": "string",
+              "enum": [
+                "L",
+                "M",
+                "Q",
+                "H"
+              ],
+              "description": "Error correction level: low, medium, quartile, high."
+            },
+            "foreground": {
+              "type": "string",
+              "pattern": "^#([0-9A-Fa-f]{3}|[0-9A-Fa-f]{6})$",
+              "description": "Foreground hex colour (#RGB or #RRGGBB)."
+            },
+            "background": {
+              "type": "string",
+              "pattern": "^#([0-9A-Fa-f]{3}|[0-9A-Fa-f]{6})$",
+              "description": "Background hex colour (#RGB or #RRGGBB)."
+            }
+          }
+        },
+        "expectedRevision": {
+          "type": "number"
+        },
+        "name": {
+          "type": "string"
+        },
+        "destination": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "active",
+            "paused",
+            "deleted"
+          ]
+        }
+      }
+    },
+    "multipart": false
+  },
+  "DynamicCodesController_analytics": {
+    "method": "GET",
+    "path": "/projects/{projectId}/dynamic-codes/{id}/analytics",
+    "query": {
+      "type": "object",
+      "required": [],
+      "properties": {
+        "days": {
+          "type": "number",
+          "minimum": 1,
+          "maximum": 90
+        },
+        "device": {
+          "type": "string",
+          "enum": [
+            "desktop",
+            "mobile",
+            "tablet",
+            "bot",
+            "unknown"
+          ]
+        },
+        "browser": {
+          "type": "string",
+          "enum": [
+            "chrome",
+            "edge",
+            "firefox",
+            "safari",
+            "other",
+            "unknown"
+          ]
+        },
+        "country": {
+          "type": "string",
+          "description": "ISO 3166-1 alpha-2 country or unknown"
+        },
+        "bot": {
+          "type": "boolean"
+        }
+      }
+    },
+    "body": {},
+    "multipart": false
+  },
+  "DynamicCodesController_csv": {
+    "method": "GET",
+    "path": "/projects/{projectId}/dynamic-codes/{id}/analytics/export",
+    "query": {
+      "type": "object",
+      "required": [],
+      "properties": {
+        "days": {
+          "type": "number",
+          "minimum": 1,
+          "maximum": 90
+        },
+        "device": {
+          "type": "string",
+          "enum": [
+            "desktop",
+            "mobile",
+            "tablet",
+            "bot",
+            "unknown"
+          ]
+        },
+        "browser": {
+          "type": "string",
+          "enum": [
+            "chrome",
+            "edge",
+            "firefox",
+            "safari",
+            "other",
+            "unknown"
+          ]
+        },
+        "country": {
+          "type": "string",
+          "description": "ISO 3166-1 alpha-2 country or unknown"
+        },
+        "bot": {
+          "type": "boolean"
+        }
+      }
+    },
+    "body": {},
+    "multipart": false
+  },
+  "CodesController_qr": {
+    "method": "POST",
+    "path": "/projects/{projectId}/tools/qr",
+    "query": {
+      "type": "object",
+      "required": [],
+      "properties": {}
+    },
+    "body": {
+      "type": "object",
+      "required": [
+        "content"
+      ],
+      "properties": {
+        "transparent": {
+          "type": "boolean",
+          "description": "Export without a background. Scan checks use a white surface."
+        },
+        "design": {
+          "type": "object",
+          "required": [
+            "schemaVersion",
+            "template",
+            "templateVersion"
+          ],
+          "properties": {
+            "moduleShape": {
+              "type": "string",
+              "enum": [
+                "square",
+                "rounded",
+                "dots",
+                "soft",
+                "classy"
+              ]
+            },
+            "finderOuter": {
+              "type": "string",
+              "enum": [
+                "square",
+                "rounded",
+                "circle"
+              ]
+            },
+            "finderInner": {
+              "type": "string",
+              "enum": [
+                "square",
+                "rounded",
+                "dot"
+              ]
+            },
+            "fill": {
+              "type": "string",
+              "enum": [
+                "solid",
+                "linear"
+              ]
+            },
+            "textAlign": {
+              "type": "string",
+              "enum": [
+                "left",
+                "center",
+                "right"
+              ]
+            },
+            "fontFamily": {
+              "type": "string",
+              "enum": [
+                "sans",
+                "serif",
+                "mono"
+              ]
+            },
+            "fontWeight": {
+              "type": "string",
+              "enum": [
+                "normal",
+                "bold"
+              ]
+            },
+            "barTextAlign": {
+              "type": "string",
+              "enum": [
+                "left",
+                "center",
+                "right"
+              ]
+            },
+            "barTextPosition": {
+              "type": "string",
+              "enum": [
+                "above",
+                "below"
+              ]
+            },
+            "moduleScale": {
+              "type": "integer",
+              "minimum": 85,
+              "maximum": 100
+            },
+            "gradientAngle": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 180
+            },
+            "logoScale": {
+              "type": "integer",
+              "minimum": 8,
+              "maximum": 20
+            },
+            "logoPadding": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 2
+            },
+            "captionSize": {
+              "type": "integer",
+              "minimum": 8,
+              "maximum": 24
+            },
+            "quietZone": {
+              "type": "integer",
+              "minimum": 12,
+              "maximum": 32
+            },
+            "barTextSize": {
+              "type": "integer",
+              "minimum": 8,
+              "maximum": 20
+            },
+            "finderColor": {
+              "type": "string",
+              "pattern": "^#([0-9A-Fa-f]{3}|[0-9A-Fa-f]{6})$"
+            },
+            "finderInnerColor": {
+              "type": "string",
+              "pattern": "^#([0-9A-Fa-f]{3}|[0-9A-Fa-f]{6})$"
+            },
+            "gradientColor": {
+              "type": "string",
+              "pattern": "^#([0-9A-Fa-f]{3}|[0-9A-Fa-f]{6})$"
+            },
+            "frameColor": {
+              "type": "string",
+              "pattern": "^#([0-9A-Fa-f]{3}|[0-9A-Fa-f]{6})$"
+            },
+            "captionColor": {
+              "type": "string",
+              "pattern": "^#([0-9A-Fa-f]{3}|[0-9A-Fa-f]{6})$"
+            },
+            "headline": {
+              "type": "string",
+              "maxLength": 60
+            },
+            "subtitle": {
+              "type": "string",
+              "maxLength": 100
+            },
+            "schemaVersion": {
+              "type": "number",
+              "enum": [
+                1
+              ]
+            },
+            "template": {
+              "type": "string",
+              "enum": [
+                "classic",
+                "rounded",
+                "dots",
+                "label"
+              ]
+            },
+            "templateVersion": {
+              "type": "number",
+              "enum": [
+                1
+              ]
+            },
+            "frame": {
+              "type": "string",
+              "enum": [
+                "none",
+                "line",
+                "rounded",
+                "brackets",
+                "badge"
+              ]
+            },
+            "caption": {
+              "type": "string",
+              "maxLength": 60
+            },
+            "logoImageId": {
+              "type": "string",
+              "description": "Ready owned raster image in the same project; at most 1 MiB and 1 MP. QR only."
+            }
+          },
+          "description": "Static designer: four-module minimum margin, minimum three pixels per module, high ECC for logos; exact-payload scan check."
+        },
+        "content": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2048,
+          "description": "Text to encode. Also subject to the configured UTF-8 byte limit (default 2048 bytes)."
+        },
+        "format": {
+          "type": "string",
+          "enum": [
+            "png",
+            "svg"
+          ]
+        },
+        "size": {
+          "type": "integer",
+          "minimum": 128,
+          "maximum": 1024,
+          "description": "Output edge in pixels; configured limits may be lower."
+        },
+        "margin": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 16,
+          "description": "Quiet-zone margin in modules."
+        },
+        "errorCorrection": {
+          "type": "string",
+          "enum": [
+            "L",
+            "M",
+            "Q",
+            "H"
+          ],
+          "description": "Error correction level: low, medium, quartile, high."
+        },
+        "foreground": {
+          "type": "string",
+          "pattern": "^#([0-9A-Fa-f]{3}|[0-9A-Fa-f]{6})$",
+          "description": "Foreground hex colour (#RGB or #RRGGBB)."
+        },
+        "background": {
+          "type": "string",
+          "pattern": "^#([0-9A-Fa-f]{3}|[0-9A-Fa-f]{6})$",
+          "description": "Background hex colour (#RGB or #RRGGBB)."
+        }
+      }
+    },
+    "multipart": false
+  },
+  "CodesController_barcode": {
+    "method": "POST",
+    "path": "/projects/{projectId}/tools/barcode",
+    "query": {
+      "type": "object",
+      "required": [],
+      "properties": {}
+    },
+    "body": {
+      "type": "object",
+      "required": [
+        "type",
+        "content"
+      ],
+      "properties": {
+        "transparent": {
+          "type": "boolean",
+          "description": "Export without a background. Scan checks use a white surface."
+        },
+        "design": {
+          "type": "object",
+          "required": [
+            "schemaVersion",
+            "template",
+            "templateVersion"
+          ],
+          "properties": {
+            "moduleShape": {
+              "type": "string",
+              "enum": [
+                "square",
+                "rounded",
+                "dots",
+                "soft",
+                "classy"
+              ]
+            },
+            "finderOuter": {
+              "type": "string",
+              "enum": [
+                "square",
+                "rounded",
+                "circle"
+              ]
+            },
+            "finderInner": {
+              "type": "string",
+              "enum": [
+                "square",
+                "rounded",
+                "dot"
+              ]
+            },
+            "fill": {
+              "type": "string",
+              "enum": [
+                "solid",
+                "linear"
+              ]
+            },
+            "textAlign": {
+              "type": "string",
+              "enum": [
+                "left",
+                "center",
+                "right"
+              ]
+            },
+            "fontFamily": {
+              "type": "string",
+              "enum": [
+                "sans",
+                "serif",
+                "mono"
+              ]
+            },
+            "fontWeight": {
+              "type": "string",
+              "enum": [
+                "normal",
+                "bold"
+              ]
+            },
+            "barTextAlign": {
+              "type": "string",
+              "enum": [
+                "left",
+                "center",
+                "right"
+              ]
+            },
+            "barTextPosition": {
+              "type": "string",
+              "enum": [
+                "above",
+                "below"
+              ]
+            },
+            "moduleScale": {
+              "type": "integer",
+              "minimum": 85,
+              "maximum": 100
+            },
+            "gradientAngle": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 180
+            },
+            "logoScale": {
+              "type": "integer",
+              "minimum": 8,
+              "maximum": 20
+            },
+            "logoPadding": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 2
+            },
+            "captionSize": {
+              "type": "integer",
+              "minimum": 8,
+              "maximum": 24
+            },
+            "quietZone": {
+              "type": "integer",
+              "minimum": 12,
+              "maximum": 32
+            },
+            "barTextSize": {
+              "type": "integer",
+              "minimum": 8,
+              "maximum": 20
+            },
+            "finderColor": {
+              "type": "string",
+              "pattern": "^#([0-9A-Fa-f]{3}|[0-9A-Fa-f]{6})$"
+            },
+            "finderInnerColor": {
+              "type": "string",
+              "pattern": "^#([0-9A-Fa-f]{3}|[0-9A-Fa-f]{6})$"
+            },
+            "gradientColor": {
+              "type": "string",
+              "pattern": "^#([0-9A-Fa-f]{3}|[0-9A-Fa-f]{6})$"
+            },
+            "frameColor": {
+              "type": "string",
+              "pattern": "^#([0-9A-Fa-f]{3}|[0-9A-Fa-f]{6})$"
+            },
+            "captionColor": {
+              "type": "string",
+              "pattern": "^#([0-9A-Fa-f]{3}|[0-9A-Fa-f]{6})$"
+            },
+            "headline": {
+              "type": "string",
+              "maxLength": 60
+            },
+            "subtitle": {
+              "type": "string",
+              "maxLength": 100
+            },
+            "schemaVersion": {
+              "type": "number",
+              "enum": [
+                1
+              ]
+            },
+            "template": {
+              "type": "string",
+              "enum": [
+                "classic",
+                "rounded",
+                "dots",
+                "label"
+              ]
+            },
+            "templateVersion": {
+              "type": "number",
+              "enum": [
+                1
+              ]
+            },
+            "frame": {
+              "type": "string",
+              "enum": [
+                "none",
+                "line",
+                "rounded",
+                "brackets",
+                "badge"
+              ]
+            },
+            "caption": {
+              "type": "string",
+              "maxLength": 60
+            },
+            "logoImageId": {
+              "type": "string",
+              "description": "Ready owned raster image in the same project; at most 1 MiB and 1 MP. QR only."
+            }
+          },
+          "description": "Only classic/label templates; no logos or QR dot styles. Quiet zones and exact-payload scan check are enforced."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "code128",
+            "code39",
+            "ean13",
+            "ean8",
+            "upca",
+            "itf14"
+          ],
+          "description": "Barcode symbology."
+        },
+        "content": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80,
+          "description": "Text to encode (a string preserves leading zeroes). code128: 1–80 characters; code39: 1–48 uppercase letters/digits or - . space $ / + %. ean13: 12/13 digits; ean8: 7/8; upca: 11/12; itf14: 13/14. Omit the check digit to compute it; supplied check digits must be valid."
+        },
+        "format": {
+          "type": "string",
+          "enum": [
+            "png",
+            "svg"
+          ]
+        },
+        "scale": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 6,
+          "description": "Integer rendering scale factor."
+        },
+        "height": {
+          "type": "integer",
+          "minimum": 4,
+          "maximum": 40,
+          "description": "Bar height in millimetres before scaling."
+        },
+        "includeText": {
+          "type": "boolean",
+          "description": "Display human-readable content below the bars."
+        },
+        "foreground": {
+          "type": "string",
+          "pattern": "^#([0-9A-Fa-f]{3}|[0-9A-Fa-f]{6})$",
+          "description": "Foreground hex colour (#RGB or #RRGGBB)."
+        },
+        "background": {
+          "type": "string",
+          "pattern": "^#([0-9A-Fa-f]{3}|[0-9A-Fa-f]{6})$",
+          "description": "Background hex colour (#RGB or #RRGGBB)."
+        }
+      }
+    },
+    "multipart": false
+  },
+  "PdfController_pdfInfo": {
+    "method": "POST",
+    "path": "/projects/{projectId}/tools/pdf/info",
+    "query": {
+      "type": "object",
+      "required": [],
+      "properties": {}
+    },
+    "body": {
+      "type": "object",
+      "required": [
+        "file"
+      ],
+      "properties": {
+        "file": {
+          "type": "string",
+          "format": "binary"
+        }
+      }
+    },
+    "multipart": true
+  },
+  "PdfController_pdfRender": {
+    "method": "POST",
+    "path": "/projects/{projectId}/tools/pdf/render",
+    "query": {
+      "type": "object",
+      "required": [],
+      "properties": {
+        "pages": {
+          "type": "string",
+          "description": "Unique comma-separated 1-based pages in requested order, e.g. 1,3,5. Mutually exclusive with range/all. Omit selection to render page 1."
+        },
+        "rangeStart": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100,
+          "description": "Inclusive 1-based page number; rangeStart and rangeEnd must be provided together and cannot be combined with pages/all."
+        },
+        "rangeEnd": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100,
+          "description": "Inclusive 1-based page number; rangeStart and rangeEnd must be provided together and cannot be combined with pages/all."
+        },
+        "all": {
+          "type": "boolean",
+          "description": "Render the first pages up to the configured cap (default/max 10). Mutually exclusive with pages/range; does not return pages beyond the cap."
+        },
+        "format": {
+          "type": "string",
+          "enum": [
+            "png",
+            "jpeg",
+            "webp"
+          ]
+        },
+        "scale": {
+          "type": "number",
+          "minimum": 0.5,
+          "maximum": 2
+        },
+        "quality": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100,
+          "description": "JPEG/WebP encoder quality; PNG ignores this value."
+        }
+      }
+    },
+    "body": {
+      "type": "object",
+      "required": [
+        "file"
+      ],
+      "properties": {
+        "file": {
+          "type": "string",
+          "format": "binary"
+        }
+      }
+    },
+    "multipart": true
+  },
+  "PdfController_pdfMerge": {
+    "method": "POST",
+    "path": "/projects/{projectId}/tools/pdf/merge",
+    "query": {
+      "type": "object",
+      "required": [],
+      "properties": {}
+    },
+    "body": {
+      "type": "object",
+      "required": [
+        "file"
+      ],
+      "properties": {
+        "file": {
+          "type": "array",
+          "description": "Repeat the file field in merge order. Configured limits may be lower.",
+          "items": {
+            "type": "string",
+            "format": "binary"
+          }
+        }
+      }
+    },
+    "multipart": true
+  },
+  "PdfController_pdfExtract": {
+    "method": "POST",
+    "path": "/projects/{projectId}/tools/pdf/extract",
+    "query": {
+      "type": "object",
+      "required": [],
+      "properties": {
+        "pages": {
+          "type": "string",
+          "description": "Unique comma-separated 1-based pages in requested order, e.g. 1,2,5. Required unless a complete range is supplied."
+        },
+        "rangeStart": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100,
+          "description": "Inclusive 1-based page number; rangeStart and rangeEnd must be provided together and cannot be combined with pages/all."
+        },
+        "rangeEnd": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100,
+          "description": "Inclusive 1-based page number; rangeStart and rangeEnd must be provided together and cannot be combined with pages/all."
+        }
+      }
+    },
+    "body": {
+      "type": "object",
+      "required": [
+        "file"
+      ],
+      "properties": {
+        "file": {
+          "type": "string",
+          "format": "binary"
+        }
+      }
+    },
+    "multipart": true
+  },
+  "ToolArtifactsController_save": {
+    "method": "POST",
+    "path": "/projects/{projectId}/tools/artifacts",
+    "query": {
+      "type": "object",
+      "required": [],
+      "properties": {}
+    },
+    "body": {
+      "type": "object",
+      "required": [
+        "file",
+        "kind",
+        "displayName",
+        "contentType"
+      ],
+      "properties": {
+        "file": {
+          "type": "string",
+          "format": "binary"
+        },
+        "kind": {
+          "type": "string",
+          "enum": [
+            "qr",
+            "barcode",
+            "pdf_render",
+            "pdf_merge",
+            "pdf_extract",
+            "image_transform"
+          ]
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "contentType": {
+          "type": "string"
+        },
+        "requestSnapshot": {
+          "type": "string",
+          "description": "JSON object of feature-specific generation hints only. Credentials, headers, storage options and arbitrary nested objects are rejected."
+        },
+        "sourceImageId": {
+          "type": "string"
+        }
+      }
+    },
+    "multipart": true
+  },
+  "ToolArtifactsController_list": {
+    "method": "GET",
+    "path": "/projects/{projectId}/tools/artifacts",
+    "query": {
+      "type": "object",
+      "required": [],
+      "properties": {
+        "page": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "limit": {
+          "minimum": 1,
+          "maximum": 100,
+          "type": "integer"
+        },
+        "q": {
+          "type": "string"
+        },
+        "kind": {
+          "type": "string",
+          "enum": [
+            "qr",
+            "barcode",
+            "pdf_render",
+            "pdf_merge",
+            "pdf_extract",
+            "image_transform",
+            "docx_render",
+            "xlsx_render",
+            "pptx_render",
+            "website_capture"
+          ]
+        }
+      }
+    },
+    "body": {},
+    "multipart": false
+  },
+  "ToolArtifactsController_get": {
+    "method": "GET",
+    "path": "/projects/{projectId}/tools/artifacts/{id}",
+    "query": {
+      "type": "object",
+      "required": [],
+      "properties": {}
+    },
+    "body": {},
+    "multipart": false
+  },
+  "ToolArtifactsController_remove": {
+    "method": "DELETE",
+    "path": "/projects/{projectId}/tools/artifacts/{id}",
+    "query": {
+      "type": "object",
+      "required": [],
+      "properties": {}
+    },
+    "body": {},
+    "multipart": false
+  },
+  "ToolArtifactsController_content": {
+    "method": "GET",
+    "path": "/projects/{projectId}/tools/artifacts/{id}/content",
+    "query": {
+      "type": "object",
+      "required": [],
+      "properties": {}
+    },
+    "body": {},
+    "multipart": false
+  },
+  "OutputsController_summary": {
+    "method": "GET",
+    "path": "/projects/{projectId}/outputs/summary",
+    "query": {
+      "type": "object",
+      "required": [],
+      "properties": {
+        "scope": {
+          "type": "string",
+          "enum": [
+            "all",
+            "generated"
+          ]
+        }
+      }
+    },
+    "body": {},
+    "multipart": false
+  }
+}

@@ -1,0 +1,968 @@
+# Copyright (C) 2026 Imazeo
+# This file is distributed under the GPL-2.0-or-later license.
+msgid ""
+msgstr ""
+"Project-Id-Version: Imazeo 1.1.0\n"
+"Report-Msgid-Bugs-To: https://github.com/Imazeohq/imazeo-wordpress/issues\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Domain: imazeo\n"
+
+#: includes/class-media.php:164
+#, php-format
+msgid "%1$s (%2$s)"
+msgstr ""
+
+#: includes/class-admin.php:159
+msgid "A site administrator can connect an Imazeo project to process media."
+msgstr ""
+
+#: includes/class-workspace.php:41
+msgid "A site administrator must connect an Imazeo project in Settings → Imazeo."
+msgstr ""
+
+#: includes/class-admin.php:238
+msgid "A worker was interrupted. Check project usage before submitting again."
+msgstr ""
+
+#: includes/class-processing.php:24
+msgid "An attachment changed after review. Select it again."
+msgstr ""
+
+#: includes/class-processing.php:45
+msgid "An attachment’s permissions changed after approval."
+msgstr ""
+
+#: includes/class-admin.php:392
+msgid "An image in this selection is already being processed."
+msgstr ""
+
+#: includes/class-queue.php:85
+msgid "An image in this selection is already queued. Wait for it to finish or remove it from the selection."
+msgstr ""
+
+#: includes/class-workspace.php:296
+msgid "Approval sends the selected files, URLs or text and processing options to Imazeo. Results that you import are stored in the WordPress Media Library."
+msgstr ""
+
+#: includes/class-workspace.php:301
+msgid "Approve and queue"
+msgstr ""
+
+#: includes/class-admin.php:197
+msgid "Approve and queue copies"
+msgstr ""
+
+#: includes/class-workspace.php:277
+msgid "Approve processing"
+msgstr ""
+
+#: includes/class-admin.php:182
+msgid "Approve WebP copies"
+msgstr ""
+
+#: includes/class-admin.php:192
+msgid "Approving sends the selected files to Imazeo. The service may retain uploaded originals. Copies are added to WordPress in the background."
+msgstr ""
+
+#: includes/class-admin.php:382
+msgid "Authorize external processing to connect this site."
+msgstr ""
+
+#: includes/class-project-library.php:280
+msgid "Browse conversion jobs"
+msgstr ""
+
+#: includes/class-project-library.php:270
+msgid "Browse image transformations"
+msgstr ""
+
+#: includes/class-admin.php:248
+msgid "Cancel remaining work"
+msgstr ""
+
+#: includes/class-project-library.php:284
+msgid "Cancel the conversion"
+msgstr ""
+
+#: includes/class-admin.php:409
+msgid "Cancelled"
+msgstr ""
+
+#: includes/class-operations.php:38
+msgid "Capture a website"
+msgstr ""
+
+#: includes/class-processing.php:148
+msgid "Check the conversion in Project library for its latest status or available result."
+msgstr ""
+
+#: includes/class-project-library.php:61
+msgid "Check the project fields and try again."
+msgstr ""
+
+#: includes/class-operations.php:165 includes/class-workspace.php:380
+msgid "Check the selected files, field values and page selection."
+msgstr ""
+
+#: includes/class-admin.php:407
+msgid "Checking for the previous result"
+msgstr ""
+
+#: includes/class-media.php:70
+msgid "Choose a readable local file up to 5 MiB."
+msgstr ""
+
+#: includes/class-media.php:82
+msgid "Choose a supported raster image up to 16 megapixels."
+msgstr ""
+
+#: includes/class-workspace.php:379
+msgid "Choose editable local files of the requested type within the transfer limit."
+msgstr ""
+
+#: includes/class-project-library.php:216 includes/class-workspace.php:85
+msgid "Choose media"
+msgstr ""
+
+#: includes/class-workspace.php:62
+msgid "Choose up to 10 editable attachments of the required type. The previous selection was cleared."
+msgstr ""
+
+#: includes/class-admin.php:408
+msgid "Complete"
+msgstr ""
+
+#: includes/class-project-library.php:67
+msgid "Confirm the transfer or project change before continuing."
+msgstr ""
+
+#: includes/class-project-library.php:116
+msgid "Connect a project in Settings → Imazeo."
+msgstr ""
+
+#: includes/class-workspace.php:377
+msgid "Connect an Imazeo project before continuing."
+msgstr ""
+
+#: includes/class-admin.php:56
+msgid "Connect an Imazeo project to process and manage media from WordPress."
+msgstr ""
+
+#: includes/class-admin.php:81
+msgid "Connect project"
+msgstr ""
+
+#: includes/class-admin.php:60
+#, php-format
+msgid "Connected to project %s."
+msgstr ""
+
+#: includes/class-admin.php:286
+msgid "Conversion ID"
+msgstr ""
+
+#: includes/class-project-library.php:130
+msgid "Conversion jobs"
+msgstr ""
+
+#: includes/class-project-library.php:292
+msgid "Create a dynamic QR link"
+msgstr ""
+
+#: includes/class-project-library.php:183
+msgid "Create a QR image for this link"
+msgstr ""
+
+#: includes/class-admin.php:230
+msgid "Create WebP copy"
+msgstr ""
+
+#: includes/class-admin.php:166 includes/class-workspace.php:17 includes/class-workspace.php:17 includes/class-workspace.php:38
+msgid "Create with Imazeo"
+msgstr ""
+
+#: includes/class-workspace.php:167
+msgid "Default"
+msgstr ""
+
+#: includes/class-project-library.php:269
+msgid "Delete the project original"
+msgstr ""
+
+#: includes/class-project-library.php:273
+msgid "Delete the project transformation"
+msgstr ""
+
+#: includes/class-project-library.php:278
+msgid "Delete the saved project output"
+msgstr ""
+
+#: includes/class-admin.php:87
+msgid "Disconnect Imazeo"
+msgstr ""
+
+#: includes/class-project-library.php:285
+msgid "Download or import the conversion"
+msgstr ""
+
+#: includes/class-project-library.php:268
+msgid "Download or import the original"
+msgstr ""
+
+#: includes/class-project-library.php:277
+msgid "Download or import the saved output"
+msgstr ""
+
+#: includes/class-project-library.php:272
+msgid "Download or import the transformation"
+msgstr ""
+
+#: includes/class-project-library.php:223
+msgid "Download privately"
+msgstr ""
+
+#: includes/class-project-library.php:296
+msgid "Download scan analytics CSV"
+msgstr ""
+
+#: includes/class-admin.php:277
+msgid "Download SVG"
+msgstr ""
+
+#: includes/class-project-library.php:131
+msgid "Dynamic QR links"
+msgstr ""
+
+#: includes/class-project-library.php:294
+msgid "Edit the dynamic QR link"
+msgstr ""
+
+#: includes/class-connection.php:49
+msgid "Encrypted key storage requires OpenSSL and a unique AUTH_KEY in wp-config.php. Ask your administrator to configure IMAZEO_API_KEY in wp-config.php instead."
+msgstr ""
+
+#: includes/class-admin.php:384
+msgid "Encrypted key storage requires OpenSSL and a unique AUTH_KEY. A site administrator can configure IMAZEO_API_KEY in wp-config.php instead."
+msgstr ""
+
+#: includes/class-admin.php:383
+msgid "Enter a valid Imazeo project API key."
+msgstr ""
+
+#: includes/class-project-library.php:71
+msgid "Enter a valid public HTTP or HTTPS destination."
+msgstr ""
+
+#: includes/class-connection.php:43
+msgid "Enter an Imazeo project API key."
+msgstr ""
+
+#: includes/class-lifecycle.php:57
+msgid "Every minute for Imazeo"
+msgstr ""
+
+#: includes/class-operations.php:34
+msgid "Extract PDF pages"
+msgstr ""
+
+#: includes/class-featured-media.php:51
+msgid "Featured image"
+msgstr ""
+
+#: includes/class-project-library.php:281
+msgid "Find a conversion by request key"
+msgstr ""
+
+#: includes/class-project-library.php:287
+msgid "Find a processing operation by request key"
+msgstr ""
+
+#: includes/class-project-library.php:291
+msgid "Find dynamic QR links"
+msgstr ""
+
+#: includes/class-project-library.php:274
+msgid "Find saved outputs"
+msgstr ""
+
+#: includes/class-project-library.php:265
+msgid "Find uploaded originals"
+msgstr ""
+
+#: includes/class-operations.php:40
+msgid "Generate a barcode"
+msgstr ""
+
+#: includes/class-operations.php:39
+msgid "Generate a QR code"
+msgstr ""
+
+#: includes/class-project-library.php:236
+msgid "I authorize saving the result as a WordPress attachment if I selected import."
+msgstr ""
+
+#: includes/class-project-library.php:236
+msgid "I authorize this project change or upload."
+msgstr ""
+
+#: includes/class-admin.php:75
+msgid "I authorize this site to contact Imazeo. Users with media upload permission can send processing requests and spend project credits after review. They must also be able to edit any attachments they send."
+msgstr ""
+
+#: includes/class-workspace.php:111
+msgid "ID"
+msgstr ""
+
+#: includes/class-admin.php:35 includes/class-admin.php:35 includes/class-admin.php:54 includes/class-admin.php:124 imazeo.php:3
+msgid "Imazeo"
+msgstr ""
+
+#: includes/class-api.php:234
+msgid "Imazeo could not be reached. Check your site’s connection and try again if no work was submitted."
+msgstr ""
+
+#: includes/class-api.php:251
+msgid "Imazeo could not complete the request. Check the project’s usage before submitting again."
+msgstr ""
+
+#: includes/class-admin.php:394
+msgid "Imazeo could not complete this action. Check the connection and try again."
+msgstr ""
+
+#: includes/class-workspace.php:382
+msgid "Imazeo could not prepare this job. Check your project and queue before retrying."
+msgstr ""
+
+#: includes/class-admin.php:385 includes/class-api.php:247
+msgid "Imazeo denied access. Check the project key, plan and permissions."
+msgstr ""
+
+#: includes/class-processing.php:70
+msgid "Imazeo did not return an image identifier."
+msgstr ""
+
+#: includes/class-featured-media.php:18 includes/class-featured-media.php:18
+msgid "Imazeo Featured Image"
+msgstr ""
+
+#: includes/class-worker.php:115
+msgid "Imazeo has no retained result for this request. Review project usage before starting a new copy."
+msgstr ""
+
+#: includes/class-admin.php:387
+msgid "Imazeo is limiting requests. Wait a moment and try again."
+msgstr ""
+
+#: includes/class-api.php:249
+msgid "Imazeo is limiting requests. Wait before submitting more work."
+msgstr ""
+
+#: includes/class-admin.php:77
+msgid "Imazeo may retain uploaded originals in the project. Review its service terms and privacy notice before connecting."
+msgstr ""
+
+#: includes/class-admin.php:44
+msgid "Imazeo privacy notice"
+msgstr ""
+
+#: includes/class-admin.php:36 includes/class-admin.php:36 includes/class-admin.php:156
+msgid "Imazeo Processing Queue"
+msgstr ""
+
+#: includes/class-admin.php:70
+msgid "Imazeo project API key"
+msgstr ""
+
+#: includes/class-project-library.php:18 includes/class-project-library.php:18 includes/class-project-library.php:114
+msgid "Imazeo Project Library"
+msgstr ""
+
+#: includes/class-api.php:110
+msgid "Imazeo returned a result that exceeds the WordPress transfer limit."
+msgstr ""
+
+#: includes/class-api.php:285
+msgid "Imazeo returned an unexpected response. Review project usage before submitting again."
+msgstr ""
+
+#: includes/class-processing.php:201
+msgid "Imazeo returned invalid PDF page data."
+msgstr ""
+
+#: includes/class-admin.php:378
+msgid "Imazeo was disconnected. Copies already in the Media Library remain available."
+msgstr ""
+
+#: includes/class-project-library.php:224
+msgid "Import into the Media Library"
+msgstr ""
+
+#: includes/class-operations.php:31
+msgid "Inspect a PDF"
+msgstr ""
+
+#: includes/class-admin.php:72
+msgid "Manage project keys in Imazeo"
+msgstr ""
+
+#: includes/class-workspace.php:280
+#, php-format
+msgid "Maximum cost: %s processing credits."
+msgstr ""
+
+#: includes/class-admin.php:190
+#, php-format
+msgid "Maximum edge %1$s px, WebP quality %2$s."
+msgstr ""
+
+#: includes/class-workspace.php:113
+msgid "Maximum output size in bytes"
+msgstr ""
+
+#: includes/class-admin.php:222
+msgid "Media job"
+msgstr ""
+
+#: includes/class-project-library.php:214
+msgid "Media Library attachment ID"
+msgstr ""
+
+#: includes/class-workspace.php:83
+msgid "Media Library attachment IDs in order"
+msgstr ""
+
+#: includes/class-admin.php:379
+msgid "Media processing was queued. Refresh the queue to check progress."
+msgstr ""
+
+#: includes/class-workspace.php:69
+msgid "Media tools"
+msgstr ""
+
+#: includes/class-operations.php:33
+msgid "Merge PDFs"
+msgstr ""
+
+#: includes/class-workspace.php:120
+msgid "Mirror horizontally"
+msgstr ""
+
+#: includes/class-workspace.php:119
+msgid "Mirror vertically"
+msgstr ""
+
+#: includes/class-workspace.php:114
+msgid "Mode"
+msgstr ""
+
+#: includes/class-admin.php:410
+msgid "Needs attention"
+msgstr ""
+
+#: includes/class-workspace.php:136 includes/class-workspace.php:169
+msgid "No"
+msgstr ""
+
+#: includes/class-admin.php:216
+msgid "No media jobs have been queued."
+msgstr ""
+
+#: includes/class-processing.php:154
+msgid "No result could be recovered. Check the project before approving another request."
+msgstr ""
+
+#: includes/class-admin.php:161
+msgid "Open Imazeo settings"
+msgstr ""
+
+#: includes/class-project-library.php:122
+msgid "Open imported media"
+msgstr ""
+
+#: includes/class-admin.php:167
+msgid "Open Media Library"
+msgstr ""
+
+#: includes/class-workspace.php:90
+msgid "Or reuse an original from this project"
+msgstr ""
+
+#: includes/class-workspace.php:88
+msgid "Or use a public image URL"
+msgstr ""
+
+#: includes/class-project-library.php:171
+#, php-format
+msgid "Page %1$d of %2$d"
+msgstr ""
+
+#: includes/class-workspace.php:116
+msgid "Page numbers"
+msgstr ""
+
+#: includes/class-featured-media.php:65
+msgid "Post, page or product ID"
+msgstr ""
+
+#: includes/class-project-library.php:220
+msgid "Previous ETag"
+msgstr ""
+
+#: includes/class-admin.php:79
+msgid "Privacy notice"
+msgstr ""
+
+#: includes/class-admin.php:129
+msgid "Process this attachment"
+msgstr ""
+
+#: includes/class-admin.php:98 includes/class-admin.php:105
+msgid "Process with Imazeo"
+msgstr ""
+
+#: includes/class-admin.php:214
+msgid "Processing and recent results"
+msgstr ""
+
+#: includes/class-project-library.php:132
+msgid "Processing credits"
+msgstr ""
+
+#: includes/class-admin.php:404
+msgid "Processing media"
+msgstr ""
+
+#: includes/class-workspace.php:98
+msgid "Processing options"
+msgstr ""
+
+#: includes/class-admin.php:63
+msgid "Project connection"
+msgstr ""
+
+#: includes/class-project-library.php:129
+msgid "Project outputs"
+msgstr ""
+
+#: includes/class-project-library.php:209
+msgid "Project record ID"
+msgstr ""
+
+#: includes/class-workspace.php:110
+msgid "Public URL"
+msgstr ""
+
+#: includes/class-workspace.php:117
+msgid "QR style options"
+msgstr ""
+
+#: includes/class-admin.php:402
+msgid "Queued"
+msgstr ""
+
+#: includes/class-admin.php:219
+msgid "Refresh status"
+msgstr ""
+
+#: includes/class-project-library.php:77
+msgid "Reload the form before modifying the dynamic QR link."
+msgstr ""
+
+#: includes/class-operations.php:37
+msgid "Render a PowerPoint slide"
+msgstr ""
+
+#: includes/class-operations.php:35
+msgid "Render a Word document"
+msgstr ""
+
+#: includes/class-operations.php:36
+msgid "Render an Excel sheet"
+msgstr ""
+
+#: includes/class-operations.php:32
+msgid "Render PDF pages"
+msgstr ""
+
+#: includes/class-workspace.php:115
+msgid "Render up to the first ten pages"
+msgstr ""
+
+#: includes/class-featured-media.php:102
+msgid "Replace featured image"
+msgstr ""
+
+#: includes/class-project-library.php:286
+msgid "Request a processing quote"
+msgstr ""
+
+#: includes/class-admin.php:288 includes/class-workspace.php:112
+msgid "Request key"
+msgstr ""
+
+#: includes/class-featured-media.php:102
+msgid "Restore original featured image"
+msgstr ""
+
+#: includes/class-admin.php:224
+msgid "Result"
+msgstr ""
+
+#: includes/class-admin.php:281
+msgid "Result details"
+msgstr ""
+
+#: includes/class-project-library.php:289
+msgid "Retrieve the retained result"
+msgstr ""
+
+#: includes/class-featured-media.php:68
+msgid "Review featured image"
+msgstr ""
+
+#: includes/class-featured-media.php:35
+msgid "Review featured image restoration"
+msgstr ""
+
+#: includes/class-workspace.php:102
+msgid "Review processing credits"
+msgstr ""
+
+#: includes/class-workspace.php:292
+msgid "Review request settings"
+msgstr ""
+
+#: includes/class-project-library.php:275
+msgid "Save an attachment in the Imazeo project"
+msgstr ""
+
+#: includes/class-project-library.php:283
+msgid "Save the conversion in the Imazeo project"
+msgstr ""
+
+#: includes/class-admin.php:406
+msgid "Saving to the Media Library"
+msgstr ""
+
+#: includes/class-featured-media.php:84
+msgid "Select a generated image from the processing queue and a post with a featured image, or open a previously changed post to restore it."
+msgstr ""
+
+#: includes/class-admin.php:389
+msgid "Select up to 10 editable local JPEG or PNG images, each at most 5 MiB and 16 megapixels."
+msgstr ""
+
+#: includes/class-admin.php:78
+msgid "Service terms"
+msgstr ""
+
+#: includes/class-admin.php:223
+msgid "Status"
+msgstr ""
+
+#: includes/class-workspace.php:118
+msgid "Strip metadata"
+msgstr ""
+
+#: includes/class-workspace.php:272
+msgid "That media review has expired."
+msgstr ""
+
+#: includes/class-featured-media.php:87
+msgid "That post does not support featured images or is outside your editing permissions."
+msgstr ""
+
+#: includes/class-media.php:77
+msgid "The attachment bytes do not match the selected document type."
+msgstr ""
+
+#: includes/class-processing.php:28
+msgid "The batch transfer limit is 5 MiB per request."
+msgstr ""
+
+#: includes/class-worker.php:164
+msgid "The connection or attachment permissions changed. Review project usage before submitting again."
+msgstr ""
+
+#: includes/class-api.php:250
+msgid "The credit quote expired. Review a new quote before submitting."
+msgstr ""
+
+#: includes/class-featured-media.php:57
+msgid "The featured image changed or the selected media is unavailable. Review it again."
+msgstr ""
+
+#: includes/class-featured-media.php:55
+msgid "The featured image was updated."
+msgstr ""
+
+#: includes/class-worker.php:24
+msgid "The Imazeo connection changed. Review the request again with the current connection."
+msgstr ""
+
+#: includes/class-admin.php:377
+msgid "The Imazeo project connection was verified."
+msgstr ""
+
+#: includes/class-admin.php:386 includes/class-api.php:246
+msgid "The Imazeo project has insufficient processing credits."
+msgstr ""
+
+#: includes/class-api.php:248
+msgid "The media exceeds an Imazeo plan or request limit."
+msgstr ""
+
+#: includes/class-featured-media.php:56
+msgid "The original featured image was restored."
+msgstr ""
+
+#: includes/class-media.php:65
+msgid "The original is unavailable in this site’s local uploads directory."
+msgstr ""
+
+#: includes/class-worker.php:102
+msgid "The previous request was interrupted and its result is unavailable. Review Imazeo project usage before submitting again."
+msgstr ""
+
+#: includes/class-processing.php:83
+msgid "The price increased. Review a new quote."
+msgstr ""
+
+#: includes/class-worker.php:74
+msgid "The processing price increased. Review and approve a new quote."
+msgstr ""
+
+#: includes/class-processing.php:187
+msgid "The project connection changed. Retrieve the result from the original project."
+msgstr ""
+
+#: includes/class-processing.php:64 includes/class-processing.php:87
+msgid "The project connection changed. Review the request again."
+msgstr ""
+
+#: includes/class-project-library.php:124
+msgid "The project file is unchanged."
+msgstr ""
+
+#: includes/class-workspace.php:378
+msgid "The project has insufficient processing credits."
+msgstr ""
+
+#: includes/class-admin.php:391
+msgid "The queue is full. Wait for copies to finish before starting another batch."
+msgstr ""
+
+#: includes/class-queue.php:62
+msgid "The queue is full. Wait for some copies to finish and request a new review."
+msgstr ""
+
+#: includes/class-admin.php:380
+msgid "The remaining work was cancelled. Requests already sent may still count toward usage."
+msgstr ""
+
+#: includes/class-worker.php:130
+msgid "The result could not be recovered. Review Imazeo project usage before starting a new copy."
+msgstr ""
+
+#: includes/class-admin.php:390
+msgid "The review expired or was already submitted. Select the images again."
+msgstr ""
+
+#: includes/class-api.php:82
+msgid "The selected files exceed the WordPress transfer limit."
+msgstr ""
+
+#: includes/class-worker.php:32
+msgid "The site no longer allows WebP imports. Check its upload settings and image editor."
+msgstr ""
+
+#: includes/class-worker.php:37
+msgid "The source image or its permissions changed. Review the image again before processing."
+msgstr ""
+
+#: includes/class-processing.php:223
+msgid "The SVG could not be stored for private download."
+msgstr ""
+
+#: includes/class-project-library.php:150
+msgid "There are no matching project records."
+msgstr ""
+
+#: includes/class-admin.php:342
+msgid "This action requires a form submission."
+msgstr ""
+
+#: includes/class-project-library.php:89
+msgid "This action was already submitted or the queue is busy. Check the project before repeating it."
+msgstr ""
+
+#: includes/class-media.php:58
+msgid "This attachment is private, unsupported or outside your editing permissions."
+msgstr ""
+
+#: includes/class-featured-media.php:101
+msgid "This changes the featured image on this item only. Both images remain in the Media Library."
+msgstr ""
+
+#: includes/class-admin.php:381
+msgid "This job is currently running, already finished or unavailable to your account."
+msgstr ""
+
+#: includes/class-queue.php:68 includes/class-workspace.php:381
+msgid "This media operation is already queued."
+msgstr ""
+
+#: includes/class-workspace.php:340
+msgid "This private download expired."
+msgstr ""
+
+#: includes/class-processing.php:178
+msgid "This project has no retained result for the interrupted operation. Check usage before trying again."
+msgstr ""
+
+#: includes/class-admin.php:177
+msgid "This review expired or its permissions changed. Select the images again."
+msgstr ""
+
+#: includes/class-queue.php:57
+msgid "This review expired or was already submitted. Start a new review."
+msgstr ""
+
+#: includes/class-operations.php:30
+msgid "Transform images"
+msgstr ""
+
+#: imazeo.php:5
+msgid "Transform images, work with PDFs, render documents and websites, and manage QR codes and barcodes from WordPress."
+msgstr ""
+
+#: includes/class-project-library.php:186
+msgid "Transform this original"
+msgstr ""
+
+#: includes/class-featured-media.php:32
+msgid "Transform with Imazeo"
+msgstr ""
+
+#: includes/class-admin.php:186
+#, php-format
+msgid "Up to %1$s processing credits for %2$s selected images."
+msgstr ""
+
+#: includes/class-project-library.php:266
+msgid "Upload an original to the Imazeo project"
+msgstr ""
+
+#: includes/class-admin.php:403
+msgid "Uploading the image"
+msgstr ""
+
+#: includes/class-admin.php:270
+msgid "Use as featured image"
+msgstr ""
+
+#: includes/class-project-library.php:230
+msgid "Use this link as the content when saving QR styles. Leave the entire QR options section blank to keep the saved design."
+msgstr ""
+
+#: includes/class-admin.php:81
+msgid "Verify and update connection"
+msgstr ""
+
+#: includes/class-project-library.php:41
+msgid "Verify the Imazeo project connection first."
+msgstr ""
+
+#: includes/class-project-library.php:279
+msgid "View available conversion engines"
+msgstr ""
+
+#: includes/class-project-library.php:282
+msgid "View conversion status"
+msgstr ""
+
+#: includes/class-project-library.php:290
+msgid "View dynamic QR availability"
+msgstr ""
+
+#: includes/class-project-library.php:293
+msgid "View dynamic QR details"
+msgstr ""
+
+#: includes/class-project-library.php:267
+msgid "View original details"
+msgstr ""
+
+#: includes/class-project-library.php:264
+msgid "View output totals"
+msgstr ""
+
+#: includes/class-project-library.php:288
+msgid "View processing status by operation ID"
+msgstr ""
+
+#: includes/class-project-library.php:276
+msgid "View saved output details"
+msgstr ""
+
+#: includes/class-project-library.php:295
+msgid "View scan analytics"
+msgstr ""
+
+#: includes/class-project-library.php:271
+msgid "View transformation details"
+msgstr ""
+
+#: includes/class-admin.php:405
+msgid "Waiting for the Imazeo conversion"
+msgstr ""
+
+#: includes/class-admin.php:43
+msgid "When an administrator connects Imazeo, this site sends the configured project API key to Imazeo. Approving a job can send files, URLs, text and processing choices. Uploaded originals and saved outputs may be retained in the Imazeo project. WordPress stores the imported media and limited job history. Dynamic QR links use Imazeo redirects and can collect scan analytics when enabled."
+msgstr ""
+
+#: includes/class-admin.php:68
+msgid "WordPress configuration supplies the key. Connect to verify it and authorize use on this site."
+msgstr ""
+
+#: includes/class-media.php:134
+msgid "WordPress could not accept the result format or size."
+msgstr ""
+
+#: includes/class-connection.php:65
+msgid "WordPress could not save the connection. Try again."
+msgstr ""
+
+#: includes/class-media.php:217
+msgid "WordPress could not save the media. Check upload permissions and disk space."
+msgstr ""
+
+#: includes/class-admin.php:393
+msgid "WordPress could not schedule the background worker. Check the site’s cron configuration."
+msgstr ""
+
+#: includes/class-queue.php:264
+msgid "WordPress could not update the queue. Try again in a moment."
+msgstr ""
+
+#: includes/class-admin.php:388
+msgid "WordPress needs WebP upload permission and WebP support in GD or Imagick."
+msgstr ""
+
+#: includes/class-workspace.php:136 includes/class-workspace.php:169 includes/class-workspace.php:172
+msgid "Yes"
+msgstr ""
+
+#: includes/class-workspace.php:361
+msgid "You do not have access to this operation."
+msgstr ""
+
+#: includes/class-admin.php:348
+msgid "You do not have permission to perform this action."
+msgstr ""
+
+#: includes/class-processing.php:40
+msgid "Your permission to process this media changed."
+msgstr ""

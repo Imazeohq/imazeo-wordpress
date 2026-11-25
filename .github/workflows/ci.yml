@@ -1,0 +1,114 @@
+name: WordPress plugin checks
+
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  php:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - uses: shivammathur/setup-php@f3e473d116dcccaddc5834248c87452386958240 # 2.37.2
+        with:
+          php-version: '8.3'
+          coverage: none
+          tools: composer:v2
+      - run: find includes tests -name '*.php' -print0 | xargs -0 -n 1 php -l
+      - run: php -l imazeo.php && php -l uninstall.php
+      - run: php tests/unit.php
+      - run: node --check assets/media-picker.js
+      - run: composer validate
+      - run: composer install --no-interaction --prefer-dist --no-progress
+      - run: composer lint
+
+  integration:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - php: '8.2'
+            wordpress: '6.5'
+          - php: '8.4'
+            wordpress: '7.1.5'
+    services:
+      database:
+        image: mysql:8.4
+        env:
+          MYSQL_ROOT_PASSWORD: app-fixture-root
+          MYSQL_DATABASE: imazeo_test
+          MYSQL_USER: wordpress
+          MYSQL_PASSWORD: app-fixture-user
+        ports:
+          - 3306/tcp
+        options: >-
+          --health-cmd="mysqladmin ping --silent"
+          --health-interval=5s
+          --health-timeout=5s
+          --health-retries=12
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - uses: shivammathur/setup-php@f3e473d116dcccaddc5834248c87452386958240 # 2.37.2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: mysqli, gd, openssl
+          coverage: none
+          tools: wp-cli:2.12.0
+      - run: python3 scripts/package.py
+      - name: Install and test the packaged plugin
+        env:
+          WP_VERSION: ${{ matrix.wordpress }}
+          DB_PORT: ${{ job.services.database.ports[3306] }}
+        run: |
+          wp_site="$RUNNER_TEMP/wordpress"
+          wp core download --path="$wp_site" --version="$WP_VERSION"
+          wp config create --path="$wp_site" --dbname=imazeo_test --dbuser=wordpress \
+            --dbpass=app-fixture-user --dbhost="127.0.0.1:$DB_PORT" --skip-salts
+          wp config set --path="$wp_site" AUTH_KEY "$(php -r 'echo bin2hex(random_bytes(32));')"
+          wp core install --path="$wp_site" --url=http://wordpress.test --title='Imazeo CI' \
+            --admin_user=test-admin --admin_password=admin-fixture-password \
+            --admin_email=admin@example.invalid --skip-email
+          wp config set --path="$wp_site" WP_HTTP_BLOCK_EXTERNAL true --raw
+          wp config set --path="$wp_site" DISABLE_WP_CRON true --raw
+          wp plugin install --path="$wp_site" "$GITHUB_WORKSPACE"/build/imazeo-*.zip --activate
+          wp eval-file --path="$wp_site" "$GITHUB_WORKSPACE/tests/wordpress.php"
+
+  package:
+    needs: [php, integration]
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - name: Build and verify the installable ZIP
+        run: |
+          if [[ "$GITHUB_REF_TYPE" == tag ]]; then
+            python3 scripts/package.py --tag "$GITHUB_REF_NAME"
+          else
+            python3 scripts/package.py
+          fi
+      - uses: WordPress/plugin-check-action@10857da14b6c2246d15402b3e69f777edcf8c12e # v1.1.9
+        with:
+          build-dir: build/imazeo
+          slug: imazeo
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: imazeo-wordpress
+          if-no-files-found: error
+          path: |
+            build/imazeo-*.zip
+            build/SHA256SUMS
