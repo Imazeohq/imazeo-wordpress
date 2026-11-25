@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Imazeo
- * Plugin URI: https://imazeo.com/
+ * Plugin URI: https://github.com/Imazeohq/imazeo-wordpress
  * Description: Transform images, work with PDFs, render documents and websites, and manage QR codes and barcodes from WordPress.
  * Version: 1.1.0
  * Requires at least: 6.5
