@@ -351,8 +351,13 @@ final class Workspace {
 		exit;
 	}
 
+	public static function is_post(): bool {
+		return isset( $_SERVER['REQUEST_METHOD'] ) && is_string( $_SERVER['REQUEST_METHOD'] )
+			&& 'POST' === sanitize_text_field( wp_unslash( $_SERVER['REQUEST_METHOD'] ) );
+	}
+
 	public static function check_post( string $capability ): void {
-		if ( ! current_user_can( $capability ) || 'POST' !== ( $_SERVER['REQUEST_METHOD'] ?? '' ) ) {
+		if ( ! current_user_can( $capability ) || ! self::is_post() ) {
 			self::denied();
 		}
 	}

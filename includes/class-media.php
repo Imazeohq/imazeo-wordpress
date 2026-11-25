@@ -149,10 +149,8 @@ final class Media {
 			$basename = substr( sanitize_title( $title ), 0, 120 ) ?: 'image';
 			$suffix = substr( str_replace( '-', '', wp_generate_uuid4() ), 0, 16 );
 			$name = sanitize_file_name( $basename . '-' . $suffix . '.' . $type );
-			$file = wp_handle_sideload(
-				array( 'name' => $name, 'tmp_name' => $temp, 'error' => UPLOAD_ERR_OK, 'size' => strlen( $bytes ) ),
-				array( 'test_form' => false )
-			);
+			$upload = array( 'name' => $name, 'tmp_name' => $temp, 'error' => UPLOAD_ERR_OK, 'size' => strlen( $bytes ) );
+			$file = wp_handle_sideload( $upload, array( 'test_form' => false ) );
 			if ( ! empty( $file['error'] ) ) {
 				return self::save_error();
 			}

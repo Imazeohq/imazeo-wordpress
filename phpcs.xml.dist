@@ -10,7 +10,9 @@
 	<rule ref="WordPress.Security"/>
 	<rule ref="WordPress.WP.I18n">
 		<properties>
-			<property name="text_domain" type="array" value="imazeo"/>
+			<property name="text_domain" type="array">
+				<element value="imazeo"/>
+			</property>
 		</properties>
 	</rule>
 	<rule ref="WordPress.WP.AlternativeFunctions"/>

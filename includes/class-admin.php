@@ -338,7 +338,7 @@ final class Admin {
 
 	private static function require_post( string $capability ): void {
 		self::require_cap( $capability );
-		if ( 'POST' !== ( $_SERVER['REQUEST_METHOD'] ?? '' ) ) {
+		if ( ! Workspace::is_post() ) {
 			wp_die( esc_html__( 'This action requires a form submission.', 'imazeo' ), '', array( 'response' => 405 ) );
 		}
 	}

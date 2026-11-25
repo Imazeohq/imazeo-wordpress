@@ -24,7 +24,7 @@ final class Project_Library {
 
 	/** Project access is reserved for the site role that approved the connection. */
 	public static function load(): void {
-		if ( 'POST' !== ( $_SERVER['REQUEST_METHOD'] ?? '' ) ) {
+		if ( ! Workspace::is_post() ) {
 			return;
 		}
 		Workspace::check_post( 'manage_options' );
