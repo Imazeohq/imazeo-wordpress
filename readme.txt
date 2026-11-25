@@ -1,6 +1,8 @@
 === Imazeo ===
+Contributors: imazeo
 Tags: image optimization, webp, pdf, qr code, media library
 Requires at least: 6.5
+Tested up to: 7.1
 Requires PHP: 8.2
 Stable tag: 1.1.0
 License: GPLv2 or later

@@ -1,6 +1,6 @@
 # Publishing Imazeo
 
-The intended WordPress.org slug and text domain are both `imazeo`. WordPress.org assigns the final slug during review. Add the approved maintainer’s WordPress.org username to the readme's `Contributors` field. Set `Tested up to` to the latest major and minor WordPress version verified by the integration matrix. [Plugin readme handbook](https://developer.wordpress.org/plugins/wordpress-org/how-your-readme-txt-works/)
+The intended WordPress.org slug and text domain are both `imazeo`. WordPress.org assigns the final slug during review. The readme lists `imazeo` as the WordPress.org contributor. Update `Tested up to` after the integration matrix passes on a newer WordPress release series. [Plugin readme handbook](https://developer.wordpress.org/plugins/wordpress-org/how-your-readme-txt-works/)
 
 1. Keep the version in `imazeo.php`, `readme.txt`, the changelog and the translation template aligned.
 2. Run CI and download its installable ZIP. Confirm that it extracts into `imazeo/`, then install it on a disposable site and complete the Media Library workflow with mocks. Check that Plugin Check passes with the final listing metadata before publishing.
